@@ -17,7 +17,7 @@ public class SixstoreApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(CategoryDAO categoryDAO) {
 		return runner -> {
-			CategoryService.createCategory(categoryDAO, "plushie");
+//			CategoryService.createCategory(categoryDAO, "plushie");
 		};
 	}
 }
