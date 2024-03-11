@@ -18,7 +18,7 @@ public class ProductListing {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "price", nullable = false, precision = 5, scale = 2)
+    @Column(name = "price", nullable = false, precision = 5)
     private float price;
 
     @Column(name = "quantity", nullable = false)
