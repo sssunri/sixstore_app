@@ -23,4 +23,15 @@ public class CategoryDAOImpl implements CategoryDAO {
     public void save(Category category) {
         entityManager.persist(category);
     }
+
+    @Override
+    public Category findByName(String name) {
+        try {
+            return entityManager.createQuery("SELECT c FROM Category c WHERE c.name = :name", Category.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
 }
