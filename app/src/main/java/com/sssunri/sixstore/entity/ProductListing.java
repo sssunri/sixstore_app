@@ -40,8 +40,14 @@ public class ProductListing {
     @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private Timestamp updatedAt;
 
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Timestamp(System.currentTimeMillis());
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
+
     // constructors, getters and setters
-    public ProductListing() {
+    public ProductListing(String name, String description, float price, short quantity, Category category, String imageUrl) {
     }
 
     public ProductListing(String name, String description, float price, short quantity, Category category, String imageUrl, byte rating) {
