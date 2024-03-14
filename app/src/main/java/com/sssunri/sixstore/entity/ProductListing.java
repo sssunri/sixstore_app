@@ -1,6 +1,7 @@
 package com.sssunri.sixstore.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
@@ -44,6 +45,7 @@ public class ProductListing {
     private Timestamp createdAt;
 
     @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
     @PrePersist
@@ -54,7 +56,8 @@ public class ProductListing {
     }
 
     // constructors, getters and setters
-    public ProductListing(String name, String description, String s, float price, short quantity, Category category, String imageUrl) {
+    public ProductListing() {
+
     }
 
     public ProductListing(
@@ -63,10 +66,8 @@ public class ProductListing {
             String description,
             float unitPrice,
             short unitsInStock,
-            boolean active,
             Category category,
-            String imageUrl,
-            byte rating
+            String imageUrl
     ) {
         this.sku = sku;
         this.name = name;
