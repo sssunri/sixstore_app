@@ -24,6 +24,7 @@ public class SixstoreApplication {
 
 			ProductListingService.createProductListing(
 					productListingDAO,
+					"P1403242020",
 					"pal-sized pocha dog",
 					"adorable palm-sized pocha dog featuring a cute and cuddly design. " +
 							"perfect for your furry friend's playtime and companionship",

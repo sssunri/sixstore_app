@@ -7,23 +7,33 @@ import com.sssunri.sixstore.entity.ProductListing;
 public class ProductListingService {
     public static void createProductListing(
             ProductListingDAO productListingDAO,
+            String sku,
             String name,
             String description,
-            float price,
-            short quantity,
+            float unitPrice,
+            short unitsInStock,
             Category category,
             String imageUrl
     ) {
         try {
             // creating a new product listing object
             System.out.println("creating a new product listing...");
-            ProductListing product = new ProductListing(name, description, price, quantity, category, imageUrl);
+            ProductListing product = new ProductListing(
+                    sku,
+                    name,
+                    description,
+                    unitPrice,
+                    unitsInStock,
+                    category,
+                    imageUrl
+            );
 
             // saving the product listing object
+            product.setSku(sku);
             product.setName(name);
             product.setDescription(description);
-            product.setPrice(price);
-            product.setQuantity(quantity);
+            product.setUnitPrice(unitPrice);
+            product.setUnitsInStock(unitsInStock);
             product.setCategory(category);
             product.setImageUrl(imageUrl);
 
@@ -31,7 +41,7 @@ public class ProductListingService {
             productListingDAO.save(product);
 
             // displaying the id of the saved product listing
-            System.out.println("saved product listing. generated id: " + product.getId());
+            System.out.println("saved product listing. generated id: " + product.getProductId());
         } catch (Exception e) {
             // handle exceptions appropriately (log or rethrow)
             System.err.println("error while creating and saving the category: " + e.getMessage());
