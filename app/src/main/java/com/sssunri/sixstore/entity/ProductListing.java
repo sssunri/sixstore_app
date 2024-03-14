@@ -9,8 +9,11 @@ import java.sql.Timestamp;
 public class ProductListing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
-    private short id;
+    @Column(name = "id")
+    private short productId;
+
+    @Column(name = "sku", nullable = false, unique = true)
+    private String sku;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -18,11 +21,14 @@ public class ProductListing {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "price", nullable = false, precision = 5)
-    private float price;
+    @Column(name = "unit_price", nullable = false, precision = 5)
+    private float unitPrice;
 
-    @Column(name = "quantity", nullable = false)
-    private short quantity;
+    @Column(name = "units_in_stock", nullable = false)
+    private short unitsInStock;
+
+    @Column(name = "active", columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean active;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
@@ -44,24 +50,37 @@ public class ProductListing {
     protected void onCreate() {
         createdAt = new Timestamp(System.currentTimeMillis());
         updatedAt = new Timestamp(System.currentTimeMillis());
+        active = true;
     }
 
     // constructors, getters and setters
-    public ProductListing(String name, String description, float price, short quantity, Category category, String imageUrl) {
+    public ProductListing(String name, String description, String s, float price, short quantity, Category category, String imageUrl) {
     }
 
-    public ProductListing(String name, String description, float price, short quantity, Category category, String imageUrl, byte rating) {
+    public ProductListing(
+            String sku,
+            String name,
+            String description,
+            float unitPrice,
+            short unitsInStock,
+            boolean active,
+            Category category,
+            String imageUrl,
+            byte rating
+    ) {
+        this.sku = sku;
         this.name = name;
         this.description = description;
-        this.price = price;
-        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.unitsInStock = unitsInStock;
+        this.active = active;
         this.category = category;
         this.imageUrl = imageUrl;
         this.rating = rating;
     }
 
-    public short getId() {
-        return id;
+    public short getProductId() {
+        return productId;
     }
 
     public String getName() {
@@ -72,6 +91,14 @@ public class ProductListing {
         this.name = name;
     }
 
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -80,20 +107,28 @@ public class ProductListing {
         this.description = description;
     }
 
-    public float getPrice() {
-        return price;
+    public float getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setUnitPrice(float unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    public short getQuantity() {
-        return quantity;
+    public short getUnitsInStock() {
+        return unitsInStock;
     }
 
-    public void setQuantity(short quantity) {
-        this.quantity = quantity;
+    public void setUnitsInStock(short unitsInStock) {
+        this.unitsInStock = unitsInStock;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Category getCategory() {
@@ -133,11 +168,13 @@ public class ProductListing {
     @Override
     public String toString() {
         return "ProductListing{" +
-                "id=" + id +
+                "productId=" + productId +
+                ", sku='" + sku + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
+                ", unitPrice=" + unitPrice +
+                ", unitsInStock=" + unitsInStock +
+                ", active=" + active +
                 ", category=" + category +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", rating=" + rating +
