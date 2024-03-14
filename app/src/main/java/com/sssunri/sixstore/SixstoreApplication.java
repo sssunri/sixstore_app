@@ -17,22 +17,22 @@ public class SixstoreApplication {
 		SpringApplication.run(SixstoreApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(CategoryDAO categoryDAO, ProductListingDAO productListingDAO) {
-		return runner -> {
-			Category category = CategoryService.createOrRetrieveCategory(categoryDAO, "plushie");
-
-			ProductListingService.createProductListing(
-					productListingDAO,
-					"P1403242020",
-					"pal-sized pocha dog",
-					"adorable palm-sized pocha dog featuring a cute and cuddly design. " +
-							"perfect for your furry friend's playtime and companionship",
-					5.90f,
-					(short) 50,
-                    category,
-					"https://i.postimg.cc/DZxbG4kC/photo-2024-03-11-20-02-37.jpg"
-			);
-		};
-	}
+//	@Bean
+//	public CommandLineRunner commandLineRunner(CategoryDAO categoryDAO, ProductListingDAO productListingDAO) {
+//		return runner -> {
+//			Category category = CategoryService.createOrRetrieveCategory(categoryDAO, "plushie");
+//
+//			ProductListingService.createProductListing(
+//					productListingDAO,
+//					"P1403242020",
+//					"pal-sized pocha dog",
+//					"adorable palm-sized pocha dog featuring a cute and cuddly design. " +
+//							"perfect for your furry friend's playtime and companionship",
+//					5.90f,
+//					(short) 50,
+//                    category,
+//					"https://i.postimg.cc/DZxbG4kC/photo-2024-03-11-20-02-37.jpg"
+//			);
+//		};
+//	}
 }
