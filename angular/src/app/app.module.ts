@@ -3,7 +3,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
+import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 
 @NgModule({
   declarations: [
