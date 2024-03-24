@@ -19,3 +19,13 @@
     border: solid #000000 1px;
     letter-spacing: 2.5px;
 }
+
+.text-container {
+    padding-left: 10%;
+}
+
+.p {
+    display: flex;
+    justify-content: flex-start;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
