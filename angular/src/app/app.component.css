@@ -5,3 +5,17 @@
     padding-right: 10%;
     padding-top: 3.5%;
 }
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 30px;
+    padding-right: 10%;
+}
+
+.button {
+    font-family: "Courier New", "Lucida Console", monospace;
+    background-color: #ffffff;
+    border: solid #000000 1px;
+    letter-spacing: 2.5px;
+}
